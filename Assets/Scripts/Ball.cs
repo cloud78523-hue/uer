@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    [SerializeField] private float speed = 10f;
+    [SerializeField] private float moveSpeed = 10f;
+
     [SerializeField] private float jumpForce = 380f;
+
+    [SerializeField] private Rigidbody rigid;
     void Awake()
     {
          
@@ -31,12 +34,22 @@ public class Ball : MonoBehaviour
         // 取得垂直和水平方向的輸入並移動
         float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
-        transform.Translate(h * Time.deltaTime * speed, 0, v * Time.deltaTime * speed);
+        Vector3 moveDirection = new Vector3(h, 0, v);
+        rigid.velocity = moveDirection * moveSpeed; // 設定物體速度
 
         // 跳躍
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GetComponent<Rigidbody>().AddForce(0, jumpForce, 0);
+            rigid.AddForce(0, jumpForce, 0);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // 如果碰撞到的物件身上有Coin元件，就呼叫 GameManager 增加金幣數量
+        if(other.gameObject.GetComponent<Coin>())
+        {
+            GameManager.instance.AddCoin();
         }
     }
 }
