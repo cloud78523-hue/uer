@@ -10,8 +10,11 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     private int coinCount = 0;  // 收集的金幣數量
+    private float hp = 100f;    // 玩家當前的生命值
+    private float maxHp = 100f; // 玩家最大生命值
 
-    [SerializeField] private Text coinText;  
+    [SerializeField] private Text coinText;
+    [SerializeField] private Image hpBar;
     void Awake()
     {
         if (instance == null)
@@ -27,6 +30,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         UpdateCoinText();
+        hp = maxHp;
+        hpBar.fillAmount = hp / maxHp;
     }
 
 
@@ -48,9 +53,13 @@ public class GameManager : MonoBehaviour
     {
         coinText.text = coinCount.ToString();
     }
-    // Update is called once per frame
-    void Update()
+
+    public void TakeDamage(float damage)
     {
-        
+       hp = hp - damage;
+       hpBar.fillAmount = hp / maxHp;
     }
+
+
+   
 }

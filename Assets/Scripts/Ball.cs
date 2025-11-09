@@ -51,5 +51,10 @@ public class Ball : MonoBehaviour
         {
             GameManager.instance.AddCoin();
         }
+
+        if (other.gameObject.GetComponent<Trap>())
+        {
+            GameManager.instance.TakeDamage(other.gameObject.GetComponent<Trap>().damage);
+        }
     }
 }
