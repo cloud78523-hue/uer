@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -54,10 +55,31 @@ public class GameManager : MonoBehaviour
         coinText.text = coinCount.ToString();
     }
 
+    [SerializeField] private GameOverUI gameOverUI;
+
+    /// <summary>
+    /// 減少生命
+    /// </summary>
+    /// <param name="damage"></param>
+    
     public void TakeDamage(float damage)
     {
        hp = hp - damage;
        hpBar.fillAmount = hp / maxHp;
+
+        // 如果生命值小於等於0，則遊戲結束，打開GameOverUI
+        if (hp <= 0)
+        {
+            gameOverUI.OpenGameOverUI();
+        }
+    }
+
+    /// 告訴其他人得了幾分
+    /// </summary>
+    
+    public int GetScore()
+    {
+        return coinCount; // 回傳收集的金幣數量
     }
 
 
