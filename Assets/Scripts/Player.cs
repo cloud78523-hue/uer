@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ball : MonoBehaviour
+public class Player : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 10f;
 
-    [SerializeField] private float jumpForce = 380f;
+    [SerializeField] private float jumpForce = 10f;
 
-    [SerializeField] private Rigidbody rigid;
+    [SerializeField] private Rigidbody rigid; 
+    [SerializeField] private Animator anim; 
+
+    [SerializeField] private LayerMask groundLayer;
+    private float groundCheckDistance = 0.2f;
+    private bool isGrounded; // 是否在地上
     void Awake()
     {
          
@@ -32,15 +37,22 @@ public class Ball : MonoBehaviour
 
 
         // 取得垂直和水平方向的輸入並移動
-        float v = Input.GetAxis("Vertical");
+        // float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
-        Vector3 moveDirection = new Vector3(h, 0, v);
+        Vector3 moveDirection = new Vector3(h, rigid.velocity.y, 1); // 前後移動固定1
         rigid.velocity = moveDirection * moveSpeed; // 設定物體速度
 
+        Vector3 origin = transform.position + Vector3.up * 0.1f;
+        isGrounded = Physics.Raycast(origin, Vector3.down, groundCheckDistance, groundLayer); // 檢查是否在地面上
+
+        anim.SetBool("isGrounded", isGrounded); // 設定動畫參數
+        anim.SetFloat("YUelocity", rigid.velocity.y);
+
         // 跳躍
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rigid.AddForce(0, jumpForce, 0);
+            anim.SetTrigger("Jump"); 
         }
     }
 
