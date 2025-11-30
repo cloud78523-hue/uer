@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
+
 
 public class LobbyUI : MonoBehaviour
 {
@@ -11,9 +14,12 @@ public class LobbyUI : MonoBehaviour
     [SerializeField] private Button settingsButton;
     [SerializeField] private GameObject settingsPanel;
 
+
+ 
+
     private void Awake()
     {
-       // startButton.onClick.AddListener(StartGame);
+        startButton.onClick.AddListener(StartGame);
         quitButton.onClick.AddListener(QuitGame);  // µù¥U«ö¶sÂIÀ»¨Æ¥ó¡AÂIÀ»«á°õ¦æQuitGame¤èªk
         settingsButton.onClick.AddListener(OpenSettings); // µù¥U«ö¶sÂIÀ»¨Æ¥ó¡AÂIÀ»«á°õ¦æOpenSettings¤èªk
     }
@@ -37,4 +43,6 @@ public class LobbyUI : MonoBehaviour
     {
         settingsPanel.SetActive(false);
     }
+
+
 }
