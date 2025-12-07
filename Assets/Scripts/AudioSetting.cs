@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class AudioSetting : MonoBehaviour
 {
     [SerializeField] private AudioMixer audioMixer;
-
+    [SerializeField] private Button CloseButton;
     [SerializeField] private Slider masterSlider;
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider sfxSlider;
@@ -17,8 +17,15 @@ public class AudioSetting : MonoBehaviour
         masterSlider.onValueChanged.AddListener(SetMasterVolume); // slider的數值改變時，執行SetMasterVolume方法
         musicSlider.onValueChanged.AddListener(SetMusicVolume); // slider的數值改變時，執行SetMusicVolume方法
         sfxSlider.onValueChanged.AddListener(SetSFXVolume); // slider的數值改變時，執行SetSFXVolume方法
+
+        CloseButton.onClick.AddListener(Close);
     }
 
+
+    private void Close()
+    {
+        gameObject.SetActive(false);
+    }
     public void SetMasterVolume(float volume)
     {
         float v = Mathf.Clamp(volume, 0.0001f, 1f); // 限制音量在0.0001到1之間 

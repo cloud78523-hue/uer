@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 10f;
-    [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private float moveSpeed = 10f; // 左右移動速度
+    [SerializeField] private float forwardSpeed = 10f; // 前進速度
+    [SerializeField] private float jumpForce = 10f; 
 
     [SerializeField] private Rigidbody rigid;
     [SerializeField] private Animator anim;
@@ -60,7 +61,7 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 currentVelocity = rigid.velocity;
-        Vector3 newVelocity = new Vector3(h * moveSpeed,currentVelocity.y, currentVelocity.z);
+        Vector3 newVelocity = new Vector3(h * moveSpeed,currentVelocity.y, forwardSpeed);
         rigid.velocity = newVelocity;
     }
 

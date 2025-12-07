@@ -2050,7 +2050,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverSoundClip: {fileID: 8300000, guid: 1d6324c221cc4fc478881ebb3fa6facb, type: 3}
-  buttonHoverSoundSource: {fileID: 259397113}
+  footStepSound: {fileID: 0}
+  sfxSoundSource: {fileID: 0}
 --- !u!4 &1305982480
 Transform:
   m_ObjectHideFlags: 0
