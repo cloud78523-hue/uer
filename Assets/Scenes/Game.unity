@@ -656,7 +656,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.103
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -909,7 +909,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.044910714, y: -0, z: -0, w: 0.998991}
-  m_LocalPosition: {x: 0.01, y: 2.0040002, z: -2.023}
+  m_LocalPosition: {x: -0.7670002, y: 2.54, z: -4.4399996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1136,7 +1136,7 @@ Transform:
   m_GameObject: {fileID: 410087039}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: -0.01, y: 3.01, z: 0.01}
+  m_LocalPosition: {x: 0.28, y: 4.07, z: -3.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1334,17 +1334,17 @@ PrefabInstance:
     - target: {fileID: 2356958653308694819, guid: ef26b2dc882f2d741b1e5521ca67f8ef,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.7440002
       objectReference: {fileID: 0}
     - target: {fileID: 2356958653308694819, guid: ef26b2dc882f2d741b1e5521ca67f8ef,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.674
+      value: 0.76
       objectReference: {fileID: 0}
     - target: {fileID: 2356958653308694819, guid: ef26b2dc882f2d741b1e5521ca67f8ef,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.007
+      value: -1.7299998
       objectReference: {fileID: 0}
     - target: {fileID: 2356958653308694819, guid: ef26b2dc882f2d741b1e5521ca67f8ef,
         type: 3}
@@ -1839,14 +1839,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fc8597eb67361448bb20be6f95efa22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  forwardSpeed: 10
+  moveSpeed: 4.98
+  forwardSpeed: 5.93
   jumpForce: 10
   rigid: {fileID: 740586126}
   anim: {fileID: 740586129}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  moveObstacle: {fileID: 0}
 --- !u!54 &740586126
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1855,9 +1856,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 740586124}
   serializedVersion: 4
-  m_Mass: 5
+  m_Mass: 0.1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.02
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
